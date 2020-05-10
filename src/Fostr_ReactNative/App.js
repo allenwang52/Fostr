@@ -7,10 +7,16 @@ import LinearGradient from 'react-native-linear-gradient';
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.button_rows}>
-        <Button title="Account" color="gray" onPress={() => Alert.alert("What account?")} />
-        <Image source={require("./assets/FostrLogo.png")} style={{flex: 1, aspectRatio: 3, resizeMode: "contain"}}/>
-        <Button title="Message" color="red" onPress={() => Alert.alert("No matches... animals do not like you.")} />
+      <View style={[styles.button_rows, {paddingTop:30, backgroundColor:"#d19fe4", elevation: 0}]}>
+        <TouchableOpacity style={[styles.icon, {backgroundColor:"darkgrey"}]}  onPress={() => Alert.alert("What account?")}>
+          <Icon name="user" size={30} color="white"/>
+        </TouchableOpacity>
+
+        <Image source={require("./assets/FostrLogo.png")} style={{aspectRatio: 3, resizeMode: "contain", borderRadius: 25}}/>
+
+        <TouchableOpacity style={[styles.icon, {backgroundColor:"pink"}]} onPress={() => Alert.alert("This one will do.")}>
+          <Icon name="paw" size={30} color="purple"/>
+        </TouchableOpacity>
       </View>
 
       {/*
@@ -27,17 +33,17 @@ export default function App() {
       <SwipeCards style={{flex: 1}} />
 
       <View style={styles.button_rows}>
-        {/*<Button title="No" color="gray" onPress={() => Alert.alert("I hate animals.")} />
-        <Button title="info" color="lightblue" onPress={() => Alert.alert("Tf you wanna know?")} />
-        <Button title="Yes" color="red" onPress={() => Alert.alert("This one will do.")} />
-        <Button icon={<Icon name="arrow-right" size={15} color="white"/>} title="Icon Button" onPress={() => Alert.alert("This one will do.")} />*/}
-        <Button
-        icon={<Icon name="arrow-right" size={15} color="white"/>}
-        style={{fontSize: 20, color: 'green'}}
-        styleDisabled={{color: 'red'}}
-        onPress={() => Alert.alert("This one will do.")}
-        title="Press Me">
-        </Button>
+        <TouchableOpacity style={[styles.icon, {backgroundColor:"grey"}]}  onPress={() => Alert.alert("I don't like animals")}>
+          <Icon name="times" size={30} color="black"/>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={[styles.icon, {backgroundColor:"lightblue", width:40, height:40}]}  onPress={() => Alert.alert("Tf you wanna know?")}>
+          <Icon name="info" size={30} color="grey"/>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={[styles.icon, {backgroundColor:"pink"}]} onPress={() => Alert.alert("This one will do.")}>
+          <Icon name="check" size={30} color="green"/>
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
@@ -46,18 +52,19 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    backgroundColor: "#b089d0",
+    backgroundColor: "#d19fe4",
     alignItems: "center",
     justifyContent: "center",
   },
 
   button_rows: {
     width: "100%",
-    padding: 20,
+    padding: 10,
     backgroundColor: "#9089d0",
     flexDirection: "row",
+    alignItems: "center",
     justifyContent: "space-evenly",
-    borderRadius: 50,
+    elevation: 5,
   },
 
   swipe_area: {
@@ -73,5 +80,13 @@ const styles = StyleSheet.create({
     aspectRatio: 0.65,
     resizeMode: "contain",
     borderRadius: 15,
-  }
+  },
+
+  icon: {
+    width: 50,
+    height: 50,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 25,
+  },
 });
