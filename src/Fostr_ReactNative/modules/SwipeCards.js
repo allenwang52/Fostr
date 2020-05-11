@@ -107,6 +107,7 @@ export default class App extends React.Component {
         showYup={true}
         showNope={true}
         hasMaybeAction={true}
+        dragY={false} // Disabling Y drag because it is buggy (shows both maybe action and yup/nope depending which it is closer too)
 
         yupText="Like"
         nopeText="Dislike"

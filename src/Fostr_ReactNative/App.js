@@ -14,7 +14,7 @@ export default function App() {
 
         <Image source={require("./assets/FostrLogo.png")} style={{aspectRatio: 3, resizeMode: "contain", borderRadius: 25}}/>
 
-        <TouchableOpacity style={[styles.icon, {backgroundColor:"pink"}]} onPress={() => Alert.alert("This one will do.")}>
+        <TouchableOpacity style={[styles.icon, {backgroundColor:"pink"}]} onPress={() => Alert.alert("You have no matches...")}>
           <Icon name="paw" size={30} color="purple"/>
         </TouchableOpacity>
       </View>
