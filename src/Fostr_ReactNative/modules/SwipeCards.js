@@ -125,7 +125,7 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   card: {
     alignItems: 'center',
-    borderRadius: 10,
+    borderRadius: 15,
     overflow: 'hidden',
     borderColor: 'grey',
     backgroundColor: '#b089d0',
@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
     height: "90%",
   },
   text: {
-    color:"white",
+    color:"whitesmoke",
     fontSize: 30,
     paddingTop: "2%",
   },
