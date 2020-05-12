@@ -1,10 +1,13 @@
+import 'react-native-gesture-handler';
+import { NavigationContainer, Navigation } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 import { StyleSheet, Text, TextInput, View, Button, Image, Alert, SafeAreaView, Dimensions, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import SwipeCards from './modules/SwipeCards.js';
 import { LinearGradient } from 'expo-linear-gradient';
 
-export default function App() {
+function SwipeScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <LinearGradient
@@ -18,14 +21,14 @@ export default function App() {
         }}
       />
       <View style={[styles.button_rows, {paddingTop:30, backgroundColor:"transparent", elevation: 0}]}>
-        <TouchableOpacity style={[styles.icon, {backgroundColor:"darkgrey"}]}  onPress={() => Alert.alert("What account?")}>
-          <Icon name="user" size={30} color="white"/>
+        <TouchableOpacity style={[styles.icon, {backgroundColor:"grey"}]}  onPress={() => navigation.navigate("Profile")}>
+          <Icon name="user" size={30} color="whitesmoke"/>
         </TouchableOpacity>
 
         <Image source={require("./assets/FostrLogo.png")} style={styles.logo}/>
 
-        <TouchableOpacity style={[styles.icon, {backgroundColor:"pink"}]} onPress={() => Alert.alert("You have no matches...")}>
-          <Icon name="paw" size={30} color="purple"/>
+        <TouchableOpacity style={[styles.icon, {backgroundColor:"grey"}]} onPress={() => Alert.alert("You have no matches...")}>
+          <Icon name="paw" size={30} color="pink"/>
         </TouchableOpacity>
       </View>
 
@@ -43,8 +46,8 @@ export default function App() {
       <SwipeCards style={{flex: 1}} />
 
       <View style={styles.button_rows}>
-        <TouchableOpacity style={[styles.icon, {backgroundColor:"grey"}]}  onPress={() => Alert.alert("I don't like animals")}>
-          <Icon name="times" size={30} color="black"/>
+        <TouchableOpacity style={[styles.icon, {backgroundColor:"pink"}]}  onPress={() => Alert.alert("I don't like animals")}>
+          <Icon name="times" size={30} color="darkred"/>
         </TouchableOpacity>
 
         <TouchableOpacity style={[styles.icon, {backgroundColor:"lightblue", width:40, height:40}]}  onPress={() => Alert.alert("Tf you wanna know?")}>
@@ -52,10 +55,31 @@ export default function App() {
         </TouchableOpacity>
 
         <TouchableOpacity style={[styles.icon, {backgroundColor:"pink"}]} onPress={() => Alert.alert("This one will do.")}>
-          <Icon name="check" size={30} color="green"/>
+          <Icon name="check" size={30} color="darkgreen"/>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
+  )
+}
+
+function ProfileScreen({ navigation }) {
+  return (
+    <View>
+      <Text>Wow there's nothing here!</Text>
+    </View>
+  )
+}
+
+const Stack = createStackNavigator();
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Swipe">
+        <Stack.Screen name="Swipe" component={SwipeScreen} options={{headerShown: false}} />
+        <Stack.Screen name="Profile" component={ProfileScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
