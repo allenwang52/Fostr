@@ -1,19 +1,19 @@
-import 'react-native-gesture-handler';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
-import React from 'react';
-import { StyleSheet, Text, TextInput, View, Button, Image, Alert, SafeAreaView, Dimensions, TouchableOpacity } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import SwipeCards from './modules/SwipeCards.js';
-import { LinearGradient } from 'expo-linear-gradient';
+import "react-native-gesture-handler";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator, CardStyleInterpolators } from "@react-navigation/stack";
+import React from "react";
+import { StyleSheet, Text, TextInput, View, Button, Image, Alert, SafeAreaView, Dimensions, TouchableOpacity } from "react-native";
+import Icon from "react-native-vector-icons/FontAwesome";
+import SwipeCards from "./modules/SwipeCards.js";
+import { LinearGradient } from "expo-linear-gradient";
 
 function SwipeScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <LinearGradient
-        colors={['#d19fe4', '#d19fe4', '#9089d0']}
+        colors={["#d19fe4", "#d19fe4", "#9089d0"]}
         style={{
-          position: 'absolute',
+          position: "absolute",
           left: 0,
           right: 0,
           top: 0,
@@ -54,11 +54,11 @@ function SwipeScreen({ navigation }) {
 
 function ProfileScreen({ navigation }) {
   return (
-    <View>
+    <View style={[styles.container, {justifyContent:"flex-start"}]}>
       <LinearGradient
-        colors={['#d19fe4', '#d19fe4', '#9089d0']}
+        colors={["#d19fe4", "#d19fe4", "#9089d0"]}
         style={{
-          position: 'absolute',
+          position: "absolute",
           left: 0,
           right: 0,
           top: 0,
@@ -66,13 +66,60 @@ function ProfileScreen({ navigation }) {
         }}
       />
 
-      <View style={[styles.button_rows, {paddingTop:30, justifyContent: "space-between", paddingLeft: "45%"}]}>
-        <TouchableOpacity style={[styles.icon, {backgroundColor:"grey"}]}>
-          <Icon name="user" size={30} color="whitesmoke"/>
+      <View style={[styles.button_rows, {paddingTop: 30, justifyContent: "space-between", paddingLeft: Dimensions.get("window").width / 2 - 25}]}>
+        <View style={[styles.icon, {backgroundColor: "#d19fe4", elevation: 0}]}>
+          <Icon name="user" size={40} color="whitesmoke"/>
+        </View>
+
+        <TouchableOpacity style={[styles.icon, {elevation: 0}]} onPress={() => navigation.navigate("Swipe")}>
+          <Image source={require("./assets/FostrLogo.png")} style={styles.logo}/>
+        </TouchableOpacity>
+      </View>
+
+      <View style={{paddingTop:25}}>
+        <Image source={require("./assets/DogAndCat.jpg")} style={styles.profile_picture}/>
+      </View>
+
+      <View style={[styles.button_rows, {paddingTop: 10, justifyContent: "space-around"}]}>
+        <TouchableOpacity style={[styles.icon, {width: 60, height: 60, borderRadius: 50, backgroundColor: "lightblue"}]} onPress={() => navigation.navigate("Settings")}>
+          <Icon name="cog" size={40} color="white"/>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.icon} onPress={() => navigation.navigate("Swipe")}>
-          <Image source={require("./assets/FostrLogo.png")} style={styles.logo}/>
+        <View style={{paddingTop:100}}>
+          <TouchableOpacity style={[styles.icon, {width: 80, height: 80, borderRadius:70, backgroundColor:"purple"}]} onPress={() => Alert.alert("Upload your cute animal pics here")}>
+            <Icon name="image" size={50} color="pink"/>
+          </TouchableOpacity>
+        </View>
+
+        <TouchableOpacity style={[styles.icon, {width: 60, height: 60, borderRadius:50, backgroundColor:"lightgreen"}]} onPress={() => Alert.alert("Donate plz")}>
+          <Icon name="dollar" size={40} color="darkgreen"/>
+        </TouchableOpacity>
+      </View>
+    </View>
+  )
+}
+
+function SettingsScreen({ navigation }) {
+  return (
+    <View style={[styles.container, {justifyContent: "flex-start"}]}>
+      <LinearGradient
+        colors={["#d19fe4", "#d19fe4", "#9089d0"]}
+        style={{
+          position: "absolute",
+          left: 0,
+          right: 0,
+          top: 0,
+          height: Dimensions.get("window").height,
+        }}
+      />
+
+      <View style={[styles.button_rows, {paddingTop: 30, justifyContent: "space-between", paddingLeft: "45%"}]}>
+        <View style={[styles.icon, {backgroundColor: "lightblue"}]} onPress={() => navigation.navigate("Settings")}>
+          <Icon name="cog" size={30} color="white"/>
+        </View>
+
+        <TouchableOpacity style={[styles.icon, {backgroundColor: "grey"}]} onPress={() => navigation.navigate("Profile")}>
+          <Icon name="user" size={30} color="whitesmoke"/>
         </TouchableOpacity>
       </View>
     </View>
@@ -83,9 +130,9 @@ function MatchesScreen({ navigation }) {
   return (
     <View>
       <LinearGradient
-        colors={['#d19fe4', '#d19fe4', '#9089d0']}
+        colors={["#d19fe4", "#d19fe4", "#9089d0"]}
         style={{
-          position: 'absolute',
+          position: "absolute",
           left: 0,
           right: 0,
           top: 0,
@@ -93,14 +140,14 @@ function MatchesScreen({ navigation }) {
         }}
       />
 
-      <View style={[styles.button_rows, {paddingTop:30, justifyContent: "space-between", paddingRight: "45%"}]}>
+      <View style={[styles.button_rows, {paddingTop: 30, justifyContent: "space-between", paddingRight: "45%"}]}>
         <TouchableOpacity style={styles.icon} onPress={() => navigation.navigate("Swipe")}>
           <Image source={require("./assets/FostrLogo.png")} style={styles.logo}/>
         </TouchableOpacity>
 
-        <TouchableOpacity style={[styles.icon, {backgroundColor:"grey"}]}>
-          <Icon name="paw" size={30} color="pink"/>
-        </TouchableOpacity>
+        <View style={[styles.icon, {backgroundColor: "#d19fe4", elevation: 0}]}>
+          <Icon name="paw" size={40} color="pink"/>
+        </View>
       </View>
     </View>
   )
@@ -108,11 +155,11 @@ function MatchesScreen({ navigation }) {
 
 function InfoScreen({ navigation }) {
   return (
-    <View>
+    <View style={styles.container}>
       <LinearGradient
-        colors={['#d19fe4', '#d19fe4', '#9089d0']}
+        colors={["#d19fe4", "#d19fe4", "#9089d0"]}
         style={{
-          position: 'absolute',
+          position: "absolute",
           left: 0,
           right: 0,
           top: 0,
@@ -120,7 +167,11 @@ function InfoScreen({ navigation }) {
         }}
       />
 
-      <View style={[styles.button_rows, {paddingTop:30}]}>
+      <View>
+        <Image source={require("./assets/DogAndCat.jpg")} style={{resizeMode:"center"}} />
+      </View>
+
+      <View style={[styles.button_rows, {position: "absolute", bottom: 10}]}>
         <TouchableOpacity style={styles.icon} onPress={() => navigation.navigate("Swipe")}>
           <Image source={require("./assets/FostrLogo.png")} style={styles.logo}/>
         </TouchableOpacity>
@@ -129,13 +180,13 @@ function InfoScreen({ navigation }) {
   )
 }
 
-const Stack = createStackNavigator();
-
 const forFade = ({ current, closing }) => ({
   cardStyle: {
     opacity: current.progress,
   },
 });
+
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
@@ -143,6 +194,7 @@ export default function App() {
       <Stack.Navigator initialRouteName="Swipe" screenOptions={{cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS}}>
         <Stack.Screen name="Swipe" component={SwipeScreen} options={{headerShown: false, gestureDirection:"horizontal"}}/>
         <Stack.Screen name="Profile" component={ProfileScreen} options={{headerShown: false, gestureDirection:"horizontal-inverted"}}/>
+        <Stack.Screen name="Settings" component={SettingsScreen} options={{headerShown: false, cardStyleInterpolator: forFade}}/>
         <Stack.Screen name="Matches" component={MatchesScreen} options={{headerShown: false, gestureDirection:"horizontal"}}/>
         <Stack.Screen name="Info" component={InfoScreen} options={{headerShown: false, cardStyleInterpolator: forFade}}/>
       </Stack.Navigator>
@@ -188,15 +240,35 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 25,
-    elevation: 5,
+    elevation: 10,
   },
 
   logo: {
-    //aspectRatio: 3,
     paddingHorizontal: "25%",
     height: 65,
     width: 65,
     resizeMode: "contain",
     borderRadius: 25
   },
+
+  card: {
+    height: "80%",
+    width: "100%",
+    alignItems: "center",
+    borderRadius: 15,
+    overflow: "hidden",
+    borderColor: "grey",
+    backgroundColor: "#b089d0",
+    borderWidth: 1,
+  },
+
+  thumbnail: {
+    width: Dimensions.get("window").width - 10,
+  },
+
+  profile_picture: {
+    width: 250,
+    height: 250,
+    borderRadius: 150,
+  }
 });
