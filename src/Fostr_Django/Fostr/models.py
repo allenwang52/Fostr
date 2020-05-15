@@ -25,4 +25,4 @@ class Pet(models.Model):
     name = models.CharField(max_length=25)
     species = models.CharField(max_length=9,
                                 choice=SPECIES_CHOICES
-                                defailt=DOG)
+                                default=DOG)
