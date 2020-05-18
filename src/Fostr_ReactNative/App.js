@@ -1,8 +1,8 @@
 import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator, CardStyleInterpolators } from "@react-navigation/stack";
+import { createStackNavigator, CardStyleInterpolators, createMaterialTopTabNavigator } from "@react-navigation/stack";
 import React from "react";
-import { StyleSheet, Text, TextInput, View, Button, Image, Alert, SafeAreaView, Dimensions, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, TextInput, ScrollView, View, Button, Image, Alert, SafeAreaView, Dimensions, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import SwipeCards from "./modules/SwipeCards.js";
 import { LinearGradient } from "expo-linear-gradient";
@@ -76,8 +76,9 @@ function ProfileScreen({ navigation }) {
         </TouchableOpacity>
       </View>
 
-      <View style={{paddingTop:25}}>
+      <View style={{paddingTop:25, alignItems: "center"}}>
         <Image source={require("./assets/DogAndCat.jpg")} style={styles.profile_picture}/>
+        <Text style={{fontSize: 30, color: "white"}}>Fluff and Woofer</Text>
       </View>
 
       <View style={[styles.button_rows, {paddingTop: 10, justifyContent: "space-around"}]}>
@@ -101,7 +102,7 @@ function ProfileScreen({ navigation }) {
 
 function SettingsScreen({ navigation }) {
   return (
-    <View style={[styles.container, {justifyContent: "flex-start"}]}>
+    <View>
       <LinearGradient
         colors={["#d19fe4", "#d19fe4", "#9089d0"]}
         style={{
@@ -114,13 +115,20 @@ function SettingsScreen({ navigation }) {
       />
 
       <View style={[styles.button_rows, {paddingTop: 30, justifyContent: "space-between", paddingLeft: "45%"}]}>
-        <View style={[styles.icon, {backgroundColor: "lightblue"}]} onPress={() => navigation.navigate("Settings")}>
-          <Icon name="cog" size={30} color="white"/>
+        <View style={[styles.icon, {backgroundColor: "#d19fe4", elevation: 0}]} onPress={() => navigation.navigate("Settings")}>
+          <Icon name="cog" size={40} color="white"/>
         </View>
 
         <TouchableOpacity style={[styles.icon, {backgroundColor: "grey"}]} onPress={() => navigation.navigate("Profile")}>
           <Icon name="user" size={30} color="whitesmoke"/>
         </TouchableOpacity>
+      </View>
+
+      <View style={{paddingLeft:20}}>
+        <Text>Account</Text>
+        <TextInput style={{height: 40, width: Dimensions.get("window").width / 2, borderColor: "grey", borderWidth: 1, paddingLeft: 10, color: "lightgrey"}}>Username</TextInput>
+
+        <Text style={{paddingTop: 20}}>Range</Text>
       </View>
     </View>
   )
@@ -140,7 +148,7 @@ function MatchesScreen({ navigation }) {
         }}
       />
 
-      <View style={[styles.button_rows, {paddingTop: 30, justifyContent: "space-between", paddingRight: "45%"}]}>
+      <View style={[styles.button_rows, {paddingTop: 30, justifyContent: "space-between", paddingRight: Dimensions.get("window").width / 2 - 25}]}>
         <TouchableOpacity style={styles.icon} onPress={() => navigation.navigate("Swipe")}>
           <Image source={require("./assets/FostrLogo.png")} style={styles.logo}/>
         </TouchableOpacity>
