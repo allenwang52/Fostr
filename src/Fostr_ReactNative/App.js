@@ -2,7 +2,7 @@ import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator, CardStyleInterpolators, createMaterialTopTabNavigator } from "@react-navigation/stack";
 import React from "react";
-import { StyleSheet, Text, TextInput, ScrollView, View, Button, Image, Alert, SafeAreaView, Dimensions, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, TextInput, View, Button, Image, Alert, SafeAreaView, Dimensions, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import SwipeCards from "./modules/SwipeCards.js";
 import { LinearGradient } from "expo-linear-gradient";
